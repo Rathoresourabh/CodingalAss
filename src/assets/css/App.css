@@ -17,3 +17,10 @@ background-color: rgba(255,113,96);
 
 
 }
+.main {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+  background-color:rgba(255,113,96);
+  color: #fff;
+}

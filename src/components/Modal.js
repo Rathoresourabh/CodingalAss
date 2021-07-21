@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -28,29 +28,42 @@ const useStyles = makeStyles((theme) => ({
   actions: {
     display: "flex",
     justifyContent: "flex-start",
+    marginLeft: "10px" ,
+    marginBottom: "20px"
   },
   container: {
     display: "flex",
   },
+  text: {
+    minWidth: "100%",
+    color: "#fff"
+
+  }
 }));
 
-export default function Modal() {
+export default function Modal({passItemData}) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState(false);
   const [checkedOther, setCheckedOther] = useState(false);
-  const onClickHandler = () => setCheckedOther(!checkedOther);
+  const onClickHandler = () => setChecked(false);
 
+  const ClickHandler = () => setCheckedOther(!checkedOther);
 
-  
-
+  // const [endTime , setEndTime] = useState({timer});
+  // const [timer, setTimer] = useState({timer});
   const handleChange = (event) => {
     // setChecked(event.target.checked)
     setChecked(!checked);
   };
 
+  useEffect(() => {
+    passItemData(open)
+  },[open])
+
   const handleClickOpen = () => {
     setOpen(true);
+    
   };
 
   const handleClose = () => {
@@ -59,7 +72,7 @@ export default function Modal() {
 
   return (
     <div>
-      <Button className={classes.customButton} onClick={handleClickOpen}>
+      <Button className={classes.customButton} onClick={handleClickOpen} >
         End Class
       </Button>
       <Dialog
@@ -82,6 +95,7 @@ export default function Modal() {
               <Checkbox
                 icon={<RadioButtonUncheckedIcon />}
                 checkedIcon={<CheckCircleIcon className={classes.checkBox} />}
+                onClick={onClickHandler}
               />
             }
             label="Class completed"
@@ -161,7 +175,7 @@ export default function Modal() {
                       checkedIcon={
                         <CheckCircleIcon className={classes.checkBox} />
                       }
-                      onClick={onClickHandler}
+                      onClick={ClickHandler}
                       checked ={checkedOther}
                     />
                   }
@@ -171,6 +185,7 @@ export default function Modal() {
                   <Collapse in={checkedOther}>
                     <DialogContent>
                       <TextField
+                      className={classes.text}
                         autoFocus
                         margin="dense"
                         id="name"
@@ -178,6 +193,7 @@ export default function Modal() {
                         type="text"
                         fullWidth
                         variant="outlined"
+                        color="secondary"
                       />
                     </DialogContent>
                   </Collapse>

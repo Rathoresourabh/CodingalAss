@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState , useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MainNavBar() {
   const classes = useStyles();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [open, setOpen] = useState(false);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -80,7 +81,7 @@ export default function MainNavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <Modal />
+        <Modal passItemData={(e) => setOpen(e)}/>
       </MenuItem>
       <MenuItem>
         <Timer />
@@ -94,12 +95,12 @@ export default function MainNavBar() {
         <Toolbar>
           <img className={classes.logo} src={logo} alt="Logo"></img>
           <Typography variant="h6" className={classes.title}>
-             Trial Lesson [Grade 1-3]
+            Trial Lesson [Grade 1-3]
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Timer />
-            <Modal />
+            <Timer open={open}/>
+            <Modal passItemData={(e) => setOpen(e)}/>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
