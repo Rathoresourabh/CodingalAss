@@ -37,21 +37,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Modal() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const check = {
-    checkA: true,
-    checkB: true,
-    checkC: true,
-    checkD: true,
-  };
-
   const [checked, setChecked] = useState(false);
   const [checkedOther, setCheckedOther] = useState(false);
+  const onClickHandler = () => setCheckedOther(!checkedOther);
 
-  const onHandler = (event) => {
-    // setCheckedOther( event.target.checkedOther )
-    setCheckedOther(!checkedOther);
-    
-  };
+
+  
 
   const handleChange = (event) => {
     // setChecked(event.target.checked)
@@ -91,7 +82,6 @@ export default function Modal() {
               <Checkbox
                 icon={<RadioButtonUncheckedIcon />}
                 checkedIcon={<CheckCircleIcon className={classes.checkBox} />}
-                // onChange={onHandler}
               />
             }
             label="Class completed"
@@ -103,7 +93,7 @@ export default function Modal() {
               <Checkbox
                 icon={<RadioButtonUncheckedIcon />}
                 checkedIcon={<CheckCircleIcon className={classes.checkBox} />}
-                onChange={handleChange}
+                onClick={handleChange}
                 checked={checked}
               />
             }
@@ -171,8 +161,8 @@ export default function Modal() {
                       checkedIcon={
                         <CheckCircleIcon className={classes.checkBox} />
                       }
-                      onChange={onHandler}
-                      checked={checkedOther}
+                      onClick={onClickHandler}
+                      checked ={checkedOther}
                     />
                   }
                   label="Other"
