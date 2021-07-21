@@ -48,13 +48,14 @@ export default function Modal() {
   const [checkedOther, setCheckedOther] = useState(false);
 
   const onHandler = (event) => {
-    setCheckedOther((prev) => !prev);
-    setCheckedOther(event.target.CheckedOther);
+    // setCheckedOther( event.target.checkedOther )
+    setCheckedOther(!checkedOther);
+    
   };
 
   const handleChange = (event) => {
-    setChecked((prev) => !prev);
-    setChecked(event.target.checked);
+    // setChecked(event.target.checked)
+    setChecked(!checked);
   };
 
   const handleClickOpen = () => {
@@ -90,7 +91,7 @@ export default function Modal() {
               <Checkbox
                 icon={<RadioButtonUncheckedIcon />}
                 checkedIcon={<CheckCircleIcon className={classes.checkBox} />}
-                // onChange={handleChange}
+                // onChange={onHandler}
               />
             }
             label="Class completed"
@@ -171,7 +172,7 @@ export default function Modal() {
                         <CheckCircleIcon className={classes.checkBox} />
                       }
                       onChange={onHandler}
-                      checkedOther={checkedOther}
+                      checked={checkedOther}
                     />
                   }
                   label="Other"
@@ -179,16 +180,14 @@ export default function Modal() {
                 <div className={classes.container}>
                   <Collapse in={checkedOther}>
                     <DialogContent>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            icon={<RadioButtonUncheckedIcon />}
-                            checkedIcon={
-                              <CheckCircleIcon className={classes.checkBox} />
-                            }
-                          />
-                        }
-                        label="Student didn't show up for the class"
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Type Here"
+                        type="text"
+                        fullWidth
+                        variant="outlined"
                       />
                     </DialogContent>
                   </Collapse>
