@@ -10,10 +10,9 @@ function Home() {
     history.push("/posts");
     console.info("You clicked a breadcrumb.");
   }
-  function onHandleClick(event){
+  function onHandleClick(event) {
     event.preventDefault();
     history.push("/passengers");
-
   }
   let history = useHistory();
   return (

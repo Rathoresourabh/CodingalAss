@@ -1,10 +1,8 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
@@ -21,17 +19,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ShowPost({post}) {
+export default function ShowPost({ post }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
           {post.title}
         </Typography>
         <Typography variant="body2" component="p">
-         {post.body}
+          {post.body}
         </Typography>
       </CardContent>
     </Card>

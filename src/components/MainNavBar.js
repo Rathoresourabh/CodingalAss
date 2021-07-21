@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -81,7 +81,7 @@ export default function MainNavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <Modal passItemData={(e) => setOpen(e)}/>
+        <Modal passItemData={(e) => setOpen(e)} />
       </MenuItem>
       <MenuItem>
         <Timer />
@@ -99,8 +99,8 @@ export default function MainNavBar() {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Timer open={open}/>
-            <Modal passItemData={(e) => setOpen(e)}/>
+            <Timer open={open} />
+            <Modal passItemData={(e) => setOpen(e)} />
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
